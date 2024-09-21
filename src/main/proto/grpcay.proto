@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option java_package = "bcr33d.grpcay";
+option java_outer_classname = "GrpcayProto";
+
+service GrpcayService {
+  rpc translate (TranslateRequest) returns (TranslateResponse);
+}
+
+message TranslateRequest {
+  string translateTo = 1;
+  string message = 2;
+}
+
+message TranslateResponse {
+  oneof response {
+    string translatedMessage = 1;
+    string errorMessage = 2;
+  }
+}
